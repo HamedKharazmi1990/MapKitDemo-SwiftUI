@@ -8,10 +8,10 @@
 import SwiftUI
 import MapKit
 
-struct ContentView: View {
+struct MarkerDemoView: View {
     var body: some View {
         Map {
-            ForEach(locationsInSpain) { location in
+            ForEach(Locations.locationsInSpain) { location in
                 Marker(
                     location.name,
                     coordinate: location.coordinate
@@ -23,5 +23,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    MarkerDemoView()
 }
