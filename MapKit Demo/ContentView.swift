@@ -6,16 +6,19 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Map {
+            ForEach(locationsInSpain) { location in
+                Marker(
+                    location.name,
+                    coordinate: location.coordinate
+                )
+                .tint(.blue)
+            }
         }
-        .padding()
     }
 }
 
