@@ -39,36 +39,75 @@ struct PolyLine_Demo: View {
         lineJoin: .miter,
         dash: [12, 6]
     )
-    var strokeStyles: [StrokeStyle] {
+    var strokeStyles: [(name: String, style: StrokeStyle)] {
         [
-            simpleStrokeStyle,
-            boldDashedStyle,
-            subtleDotStyle,
-            wavyDashStyle,
-            doubleLineStyle
+            ("Simple Dash", simpleStrokeStyle),
+            ("Bold Dash", boldDashedStyle),
+            ("Subtle Dot", subtleDotStyle),
+            ("Wavy Dash", wavyDashStyle),
+            ("Double Line", doubleLineStyle)
         ]
     }
     @State private var strokeIndex = 0
     var style: StrokeStyle {
-        strokeStyles[strokeIndex % strokeStyles.count]
+        strokeStyles[strokeIndex % strokeStyles.count].style
     }
     let gradient = Gradient(colors: [.red, .green, .blue])
+    
+    var currentStyleName: String {
+        strokeStyles[strokeIndex % strokeStyles.count].name
+    }
+    
+    let colorList: [Color] = [
+        .red,
+        .blue,
+        .green,
+        .orange,
+        .purple
+    ]
+    @State private var colorIndex = 0
+    var color: Color {
+        colorList[colorIndex % strokeStyles.count]
+    }
+    var locIndice: [(Int, Locations)] {
+        Array(
+            zip(
+                Locations.locationsInSpain.indices,
+                Locations.locationsInSpain
+            )
+        )
+    }
+    
     var body: some View {
-        Map {
-            ForEach(Locations.locationsInSpain) { location in
-                Marker(
-                    location.name,
-                    coordinate: location.coordinate
-                )
-                .tint(.blue)
+        ZStack {
+            Map {
+                ForEach(locIndice, id: \.0) { i, location in
+                    Marker(
+                        location.name,
+                        coordinate: location.coordinate
+                    )
+                    .tint(colorList[i % colorList.count])
+                }
+                
+                MapPolyline(coordinates: Locations.locationsInSpain.coordinates)
+                    .stroke(gradient, style: style)
             }
-            
-            MapPolyline(coordinates: Locations.locationsInSpain.coordinates)
-            .stroke(gradient, style: style)
-        }
-        .onTapGesture {
+            Title
+        }.onTapGesture {
             strokeIndex += 1
+            colorIndex += 1
         }
+    }
+    
+    private var Title: some View {
+        Text("Current Style: \(currentStyleName)")
+            .padding()
+            .background(Color.black.opacity(0.5).gradient)
+            .foregroundStyle(.white)
+            .bold()
+            .clipShape(.rect(cornerRadius: 8))
+            .padding()
+            .frame(maxHeight: .infinity, alignment: .top)
     }
 }
 
