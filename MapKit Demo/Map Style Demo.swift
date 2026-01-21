@@ -39,6 +39,8 @@ struct Map_Style_Demo: View {
                         Text("Standard")
                             .padding()
                             .clipShape(.rect(cornerRadius: 8))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.6)
                     }
                     Button {
                         mapStyle = .hybrid
@@ -46,6 +48,8 @@ struct Map_Style_Demo: View {
                         Text("Hybrid")
                             .padding()
                             .clipShape(.rect(cornerRadius: 8))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.6)
                     }
                     Button {
                         mapStyle = .imagery
@@ -53,6 +57,8 @@ struct Map_Style_Demo: View {
                         Text("Imagery")
                             .padding()
                             .clipShape(.rect(cornerRadius: 8))
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.6)
                     }
                 }
                 .buttonStyle(BorderedProminentButtonStyle())

@@ -11,7 +11,7 @@ import SwiftUI
 struct MapKit_DemoApp: App {
     var body: some Scene {
         WindowGroup {
-            MarkerDemoView()
+            MainView()
         }
     }
 }
