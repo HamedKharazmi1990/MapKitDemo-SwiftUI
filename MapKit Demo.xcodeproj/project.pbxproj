@@ -16,6 +16,11 @@
 			path = "MapKit Demo";
 			sourceTree = "<group>";
 		};
+		23A54F9D2F2165170017D9E1 /* assets */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = assets;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 		23A54F4A2F1FBC6F0017D9E1 = {
 			isa = PBXGroup;
 			children = (
+				23A54F9D2F2165170017D9E1 /* assets */,
 				23A54F552F1FBC6F0017D9E1 /* MapKit Demo */,
 				23A54F542F1FBC6F0017D9E1 /* Products */,
 			);
@@ -62,6 +68,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				23A54F552F1FBC6F0017D9E1 /* MapKit Demo */,
+				23A54F9D2F2165170017D9E1 /* assets */,
 			);
 			name = "MapKit Demo";
 			packageProductDependencies = (
