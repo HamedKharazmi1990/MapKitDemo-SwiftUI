@@ -29,6 +29,7 @@ extension Array where Element == Locations {
     }
 }
 
+// Locations in Spain
 extension Locations {
     static let monteSantiago = Locations(
         name: "Monte Santiago",
@@ -105,4 +106,13 @@ extension Locations {
         .gaztelugatxe
     ]
 
+}
+
+// More Locations
+extension CLLocationCoordinate2D {
+    static let englishGarten = CLLocationCoordinate2D(latitude: 48.170068, longitude: 11.610388)
+    static let olympiaPark = CLLocationCoordinate2D(latitude: 48.174827, longitude: 11.550103)
+    static let museumMineralogia = CLLocationCoordinate2D(latitude: 48.148305, longitude: 11.572150)
+    static let bmwPark = CLLocationCoordinate2D(latitude: 48.126300, longitude: 11.525370)
+    static let munich = CLLocationCoordinate2D(latitude: 48.137988, longitude: 11.575182)
 }
